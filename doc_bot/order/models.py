@@ -23,8 +23,8 @@ class Order(models.Model):
         return f"Заказа номер: {self.number}"
 
     class Meta:
-        verbose_name = "Заказ"
-        verbose_name_plural = "Заказы"
+        verbose_name = "Заказ на печать"
+        verbose_name_plural = "Заказы на печать"
 
 
 class Document(models.Model):
