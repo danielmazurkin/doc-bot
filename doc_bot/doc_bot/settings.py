@@ -75,6 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'doc_bot.wsgi.application'
 AUTH_USER_MODEL = "account.User"
+NUMBER_ORDER = set(range(1, 5000))
 
 
 STATIC_URL = "/static/"

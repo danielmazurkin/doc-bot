@@ -1,3 +1,5 @@
+from random import choice
+
 from django.db import models
 from django.conf import settings
 
@@ -18,6 +20,16 @@ class Order(models.Model):
         verbose_name="Пользователь",
         related_name="order",
     )
+
+    @classmethod
+    def get_number(cls):
+        number_order = settings.NUMBER_ORDER
+        exist_number_order = cls.objects.all().values_list("number", flat=True)
+        if exist_number_order.exists():
+            random_number = choice(list(number_order.difference(list(exist_number_order))))
+        else:
+            random_number = choice(list(number_order))
+        return random_number
 
     def __str__(self):
         return f"Заказа номер: {self.number}"
