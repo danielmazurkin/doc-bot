@@ -8,7 +8,8 @@ from order.models import Order, Document
 class DocumentFileInline(TabularInline):
     model = Document
     fields = ("file",)
-    verbose_name = "Документы для печати"
+    verbose_name = "Документ для печати"
+    verbose_name_plural = "Документы для печати"
     extra = 0
 
 
@@ -38,7 +39,9 @@ class OrderAdmin(admin.ModelAdmin):
             },
         ),
     )
-    # readonly_fields = (
-    #     "user",
-    # )
+
+    readonly_fields = (
+        "user",
+        "number",
+    )
 

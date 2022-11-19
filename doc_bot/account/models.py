@@ -14,7 +14,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True, blank=True, max_length=255, verbose_name="Логин", unique=True
     )
     name = models.CharField(
-        verbose_name="Имя Фамилия", blank=False, null=True, max_length=100
+        verbose_name="Имя в Telegram", blank=False, null=True, max_length=100
     )
     telegram_id = models.BigIntegerField(
         unique=True,

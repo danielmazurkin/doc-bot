@@ -6,7 +6,7 @@ from django.conf import settings
 
 def user_directory_path(instance, filename):
     """Функция выдает путь к загруженному файлу"""
-    return f"{instance.__class__.__name__}/user_{instance.user.id}/{filename}"
+    return f"{instance.__class__.__name__}/user_{instance.order.user.pk}/{filename}"
 
 
 class Order(models.Model):
@@ -31,6 +31,11 @@ class Order(models.Model):
             random_number = choice(list(number_order))
         return random_number
 
+    is_new = models.BooleanField(
+        verbose_name="Новый заказ",
+        default=True,
+    )
+
     def __str__(self):
         return f"Заказа номер: {self.number}"
 
@@ -47,7 +52,7 @@ class Document(models.Model):
         verbose_name="Документ для печати",
     )
 
-    user = models.ForeignKey(
+    order = models.ForeignKey(
         Order,
         on_delete=models.CASCADE,
         verbose_name="Заказ клиента",

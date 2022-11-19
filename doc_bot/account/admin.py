@@ -10,6 +10,17 @@ class UserProfileAdmin(admin.ModelAdmin):
         "name",
     )
 
+    fieldsets = (
+        (
+            "Пользователь бота",
+            {
+                "fields": (
+                    "name",
+                )
+            },
+        ),
+    )
+
     list_display = (
         "telegram_id",
         "name",

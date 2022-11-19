@@ -1,5 +1,7 @@
-from telegram.ext import CommandHandler
+from telegram.ext import CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 from bot.handlers import start_callback
+from bot.handlers import document_callback
+from bot.handlers import after_enter_button
 
 
 class BotInfoWorker:
@@ -28,4 +30,6 @@ class BotInfoWorker:
         """Устанавливает обработчики."""
         dp = self.get_dispatcher()
         dp.add_handler(CommandHandler("start", start_callback))
+        dp.add_handler(CallbackQueryHandler(after_enter_button, pattern=r"start_user_id:[0-9]+"))
+        dp.add_handler(MessageHandler(Filters.document, document_callback))
 
