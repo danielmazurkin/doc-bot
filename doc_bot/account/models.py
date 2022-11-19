@@ -26,15 +26,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name="Дата регистрации", default=timezone.now
     )
 
-
     is_staff = models.BooleanField(
-        verbose_name="Владелец услуги",
+        verbose_name="Пользователь Админки",
         default=False,
     )
+
     is_active = models.BooleanField(
         verbose_name="Суперадмин",
         default=True,
     )
+
     is_authorization = models.BooleanField(
         verbose_name="Пользователь бота",
         default=False,
