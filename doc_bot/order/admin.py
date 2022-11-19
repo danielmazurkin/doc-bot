@@ -40,13 +40,12 @@ class OrderAdmin(admin.ModelAdmin):
         ),
     )
 
-    def change_view(self, request, object_id, form_url="", extra_context=None):
-        Order.objects.filter(pk=object_id).update(is_view=True)
-        super(OrderAdmin, self).change_view(request, object_id, form_url="", extra_context=None)
-
-
     readonly_fields = (
         "user",
         "number",
     )
+
+    def change_view(self, request, object_id, form_url="", extra_context=None):
+        Order.objects.filter(pk=object_id).update(is_view=True)
+        return super(OrderAdmin, self).change_view(request, object_id, form_url="", extra_context=None)
 
