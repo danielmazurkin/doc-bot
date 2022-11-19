@@ -21,6 +21,11 @@ class Order(models.Model):
         related_name="order",
     )
 
+    is_view = models.BooleanField(
+        verbose_name="Просмотренно",
+        default=False
+    )
+
     @classmethod
     def get_number(cls):
         number_order = settings.NUMBER_ORDER
