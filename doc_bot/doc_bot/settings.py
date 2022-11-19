@@ -15,6 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+SOURCES_ROOT = BASE_DIR.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'account',
     'common',
     'bot',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +75,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'doc_bot.wsgi.application'
 AUTH_USER_MODEL = "account.User"
+
+
+STATIC_URL = "/static/"
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+STATICFILES_DIR = [STATIC_DIR]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = os.path.join(SOURCES_ROOT, "media")
+MEDIA_URL = "/media/"
+
+STATIC_ROOT = os.path.join(SOURCES_ROOT, "static")
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -112,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "ru-RU"
 
 TIME_ZONE = 'UTC'
 

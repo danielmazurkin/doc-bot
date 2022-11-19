@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from django.contrib.auth.models import Group
 
 from account.models import User
 
@@ -22,3 +22,5 @@ class UserProfileAdmin(admin.ModelAdmin):
             qs = User.objects.filter(is_superuser=False)
         return qs
 
+
+admin.site.unregister(Group)
