@@ -61,3 +61,6 @@ def document_callback(update, context):
 
         Document(file=file, order=order).save()
 
+        image = UseCaseImage().execute(str(order.number))
+        context.bot.send_message(text="Ваш проверочный код представлен на картинке ниже")
+        context.bot.send_photo(update.effective_chat.id, photo=image)

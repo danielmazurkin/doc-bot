@@ -1,6 +1,7 @@
 from core.use_case import BaseUseCase
 from PIL import Image, ImageDraw, ImageFont
 from django.conf import settings
+from io import BytesIO
 
 
 class UseCaseImage(BaseUseCase):
@@ -15,10 +16,12 @@ class UseCaseImage(BaseUseCase):
         draw.text(((W - w) / 2, (H - h) / 2), message, font=font, fill=font_color)
         return image
 
-    def execute(self, code_for_file) -> Image:
+    def execute(self, code_for_file) -> BytesIO:
+        bio = BytesIO()
         size = (300, 300)
         font = ImageFont.truetype(f"{settings.STATIC_DIR}/fonts/Roboto-Bold.ttf", 45)
         color_text = (35, 81, 247)
         img = self.__create_image(size, (255, 255, 255), code_for_file, font, color_text)
-        img.save("code_for_user.png")
-        return img
+        img.save(bio, "JPEG")
+        bio.seek(0)
+        return bio
