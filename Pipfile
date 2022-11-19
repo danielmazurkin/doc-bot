@@ -8,6 +8,7 @@ django = "*"
 pillow = "*"
 "backports.weakref" = "*"
 python-telegram-bot = "*"
+django-jazzmin = "*"
 
 [dev-packages]
 
