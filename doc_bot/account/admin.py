@@ -27,6 +27,12 @@ class UserProfileAdmin(admin.ModelAdmin):
         "date_joined",
     )
 
+    def get_queryset(self, request):
+        qs = None
+        if request.user.is_superuser:
+            qs = User.objects.filter(is_superuser=False)
+        return qs
+
     def has_add_permission(self, request):
         return False
 

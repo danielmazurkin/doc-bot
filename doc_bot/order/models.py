@@ -65,4 +65,4 @@ class Document(models.Model):
     )
 
     def __str__(self):
-        return "Документ"
+        return f"Документ: {self.file.name}"

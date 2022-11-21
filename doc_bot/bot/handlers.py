@@ -47,6 +47,11 @@ def document_callback(update, context):
 
     if order:
         Document(file=file, order=order).save()
+        context.bot.send_message(
+            chat_id=update.effective_chat.id, text=f"Вы загрузили несколько файлов, "
+                                                   f"ваш код заказа остался прежним: <b> {order.number} </b>",
+            parse_mode='HTML',
+        )
     else:
         user = User.objects.filter(
             telegram_id=update.effective_chat.id
@@ -62,5 +67,13 @@ def document_callback(update, context):
         Document(file=file, order=order).save()
 
         image = UseCaseImage().execute(str(order.number))
-        context.bot.send_message(text="Ваш проверочный код представлен на картинке ниже")
-        context.bot.send_photo(update.effective_chat.id, photo=image)
+        context.bot.send_message(
+            chat_id=update.effective_chat.id, text=f"Ваш код для документов: <b> {order.number} </b>",
+            parse_mode='HTML',
+        )
+        context.bot.send_message(
+            chat_id=update.effective_chat.ihostingd,
+            text="Ваш проверочный код представлен на картинке ниже",
+            parse_mode='HTML',
+        )
+        context.bot.send_photo(chat_id=update.effective_chat.id, photo=image)
