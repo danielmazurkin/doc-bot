@@ -9,6 +9,9 @@ pillow = "*"
 "backports.weakref" = "*"
 python-telegram-bot = "*"
 django-jazzmin = "*"
+python-decouple = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
