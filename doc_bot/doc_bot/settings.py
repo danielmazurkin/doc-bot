@@ -99,12 +99,10 @@ DATABASES = {
         "NAME": config("POSTGRES_DB", default=config("NAME", "db.sqlite3")),
         "USER": config("POSTGRES_USER", default="user"),
         "PASSWORD": config("POSTGRES_PASSWORD", default="password"),
-        "HOST": config("SQL_HOST", default="localhost"),
-        "PORT": config("SQL_PORT", default=5432, cast=int),
+        "HOST": config("POSTGRES_HOST", default="localhost"),
+        "PORT": config("POSTGRES_PORT", default=5432, cast=int),
     }
 }
-
-print(DATABASES["default"])
 
 STATIC_URL = "/static/"
 STATIC_DIR = os.path.join(BASE_DIR, "static")
