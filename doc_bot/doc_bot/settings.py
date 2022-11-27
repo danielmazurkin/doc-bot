@@ -109,7 +109,6 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 STATICFILES_DIR = [STATIC_DIR]
 
 TELEGRAM_BOT_KEY = os.getenv('BOT_TOKEN', None)
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
