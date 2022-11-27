@@ -44,7 +44,13 @@ services:
       dockerfile: ./deploy/app.Dockerfile
     command: python manage.py bot_polling
     environment:
-      - BOT_TOKEN=
+      - SQL_ENGINE=django.db.backends.postgresql
+      - POSTGRES_DB=doc_bot
+      - POSTGRES_USER=doc_bot
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - BOT_TOKEN=5322135399:AAEq3Ge1rQ8PjrOviW66yCrfe_0uOH7owHc
 
 
 volumes:

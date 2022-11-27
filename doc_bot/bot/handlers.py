@@ -5,6 +5,7 @@ from order.models import Order, Document
 from django.conf import settings
 from django.core.files import File
 from common.use_case_image import UseCaseImage
+from pathlib import Path
 
 
 def start_callback(update, context):
@@ -20,6 +21,7 @@ def start_callback(update, context):
         ).save()
 
     update.message.reply_text(text=START_MESSAGE, reply_markup=get_start_keyboard(user_id))
+    update.message.reply_text(text="Посмотреть инструкцию: https://drive.google.com/file/d/1ur0bSuE52G7UUotBH9uxj09l0xFoiJgG/view?usp=sharing")
 
 
 def after_enter_button(update, context):
@@ -76,4 +78,3 @@ def document_callback(update, context):
             text="Ваш проверочный код представлен на картинке ниже",
             parse_mode='HTML',
         )
-        context.bot.send_photo(chat_id=update.effective_chat.id, photo=image)
