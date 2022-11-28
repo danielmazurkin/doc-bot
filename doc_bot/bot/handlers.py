@@ -78,3 +78,4 @@ def document_callback(update, context):
             text="Ваш проверочный код представлен на картинке ниже",
             parse_mode='HTML',
         )
+        context.bot.send_photo(chat_id=update.effective_chat.id, photo=image)
